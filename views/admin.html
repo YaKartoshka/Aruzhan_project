@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description" content="We Deliver The Best
+	Product for You">
+    <meta property="og:image" content="./img/Bloobs.png">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="icon" href="https://s1.hostingkartinok.com/uploads/images/2023/11/1873e10262bb76a8bf35f5013b6c383b.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>AruNails</title>
+    <style>
+        .zapis {
+            width: 70vw;
+            margin: 30px auto;
+            box-shadow: 0 0 5px #F087B1;
+            border-radius: 30px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="conteiner">
+
+            <div class="Paje1" id="Pjae1">
+                <div class="header">
+                    <div class="logo">
+                        <p>AruNails</p>
+                    </div>
+                    <div class="servis">
+                        <a href="/">
+                            Главная
+                        </a>
+                        <a href="https://instagram.com/___aruzhaaaan?igshid=OGQ5ZDc2ODk2ZA==" target="_blank">
+                            Обо мне
+                        </a>
+                        <a href="#zapis">
+                            Запись
+                        </a>
+                    </div>
+                </div>
+                <main>
+                    <h1 align="center">Мои записи</h1>
+                    <div id="appointments">
+                        <div class="zapis">
+                            <h2>ID</h2>
+                            <h2>Имя</h2>
+                            <h2>Фамилия</h2>
+                            <h2>Номер</h2>
+                        </div>
+                    </div>
+                </main>
+
+
+                <div class="footer">
+                    <div class="top">
+                        <div class="footer__left">
+                            <p class="logo__foter">AruNails</p>
+                            <p class="foter__description footer__padding">Казахстан</p>
+                            <p class="foter__description">ЧИМКЕНТ</p>
+                            <p class="foter__description footer__follow">Follow us on</p>
+                            <div class="footer__sociable">
+                                <div class="sociable__box">
+                                    <img src="https://s1.hostingkartinok.com/uploads/images/2023/11/3bce3c47afde7a8921ab9aac9fa05e9d.png"
+                                        alt="instagram" class="sociable__icon">
+                                </div>
+                                <div class="sociable__box">
+                                    <img src="https://s1.hostingkartinok.com/uploads/images/2023/11/28c070ec595067ea7674ada12cbf1e36.png"
+                                        alt="instagram" class="sociable__icon">
+                                </div>
+                                <div class="sociable__box">
+                                    <img src="https://s1.hostingkartinok.com/uploads/images/2023/11/9c9b5c2d1b44934bf64fe6ddbf39b667.png"
+                                        alt="instagram" class="sociable__icon">
+                                </div>
+                                <div class="sociable__box">
+                                    <img src="https://s1.hostingkartinok.com/uploads/images/2023/11/5e45c9c400931adfd192c9f7e4ca44eb.png"
+                                        alt="instagram" class="sociable__icon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer__right">
+
+                            <div class="footer__box-right">
+                                <p class="footer__main-text">О нас</p>
+                                <p class="foterr__text-right footer__padding">О нас</p>
+                                <p class="foterr__text-right ">Партнеры</p>
+                                <p class="foterr__text-right ">Свяжитесь с нами</p>
+                                <p class="foterr__text-right ">Карьера</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="down">
+                        <p>Все права защищены</p>
+                        <div class="down__box">
+                            <img src="https://s1.hostingkartinok.com/uploads/images/2023/11/f0f435d8fd8fda1ceab5bd829d2796c1.png"
+                                alt="web" class="down__web">
+                            <select class="qw" name="#">
+                                <option class="op" value="1">Eng</option>
+                                <option class="op" value="2">UK</option>
+                                <option class="op" value="3">Ukr</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <script>
+            function showAppointments() {
+
+
+                $.ajax({
+                    url: '/zapis/get',
+                    method: 'GET',
+                    success: function (r) {
+                        let data = r
+                        data.forEach((zapis) => {
+                            var zapisDiv = `<div class="zapis"><h2>${zapis.id}</h2><h2>${zapis.last_name}</h2><h2>${zapis.first_name}</h2><h2>${zapis.phone_number}</h2></div>`;
+                            $('#appointments').append(zapisDiv);
+                        })
+                    }
+                })
+            }
+            showAppointments()
+        </script>
+
+
+</body>
+
+</html>
